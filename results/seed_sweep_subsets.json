@@ -1,0 +1,151 @@
+{
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "records": [
+    {
+      "seed": 42,
+      "task": "subset_pd_hc",
+      "protocol": "leaky",
+      "accuracy": 0.9788732394366197,
+      "balanced_accuracy": 0.9870689655172413
+    },
+    {
+      "seed": 42,
+      "task": "subset_pd_hc",
+      "protocol": "clean",
+      "accuracy": 0.8591549295774648,
+      "balanced_accuracy": 0.7539772727272727
+    },
+    {
+      "seed": 42,
+      "task": "subset_pd_dd",
+      "protocol": "leaky",
+      "accuracy": 0.967948717948718,
+      "balanced_accuracy": 0.9562667215476435
+    },
+    {
+      "seed": 42,
+      "task": "subset_pd_dd",
+      "protocol": "clean",
+      "accuracy": 0.6923076923076923,
+      "balanced_accuracy": 0.6047430830039526
+    },
+    {
+      "seed": 43,
+      "task": "subset_pd_hc",
+      "protocol": "leaky",
+      "accuracy": 0.9788732394366197,
+      "balanced_accuracy": 0.962202380952381
+    },
+    {
+      "seed": 43,
+      "task": "subset_pd_hc",
+      "protocol": "clean",
+      "accuracy": 0.7887323943661971,
+      "balanced_accuracy": 0.8193181818181818
+    },
+    {
+      "seed": 43,
+      "task": "subset_pd_dd",
+      "protocol": "leaky",
+      "accuracy": 0.9230769230769231,
+      "balanced_accuracy": 0.9222641509433962
+    },
+    {
+      "seed": 43,
+      "task": "subset_pd_dd",
+      "protocol": "clean",
+      "accuracy": 0.7692307692307693,
+      "balanced_accuracy": 0.6592885375494071
+    },
+    {
+      "seed": 44,
+      "task": "subset_pd_hc",
+      "protocol": "leaky",
+      "accuracy": 0.9788732394366197,
+      "balanced_accuracy": 0.9558823529411764
+    },
+    {
+      "seed": 44,
+      "task": "subset_pd_hc",
+      "protocol": "clean",
+      "accuracy": 0.8309859154929577,
+      "balanced_accuracy": 0.7357954545454546
+    },
+    {
+      "seed": 44,
+      "task": "subset_pd_dd",
+      "protocol": "leaky",
+      "accuracy": 0.9487179487179487,
+      "balanced_accuracy": 0.9243243243243243
+    },
+    {
+      "seed": 44,
+      "task": "subset_pd_dd",
+      "protocol": "clean",
+      "accuracy": 0.7564102564102564,
+      "balanced_accuracy": 0.6375494071146245
+    },
+    {
+      "seed": 45,
+      "task": "subset_pd_hc",
+      "protocol": "leaky",
+      "accuracy": 0.9225352112676056,
+      "balanced_accuracy": 0.850284090909091
+    },
+    {
+      "seed": 45,
+      "task": "subset_pd_hc",
+      "protocol": "clean",
+      "accuracy": 0.8450704225352113,
+      "balanced_accuracy": 0.7448863636363636
+    },
+    {
+      "seed": 45,
+      "task": "subset_pd_dd",
+      "protocol": "leaky",
+      "accuracy": 0.9871794871794872,
+      "balanced_accuracy": 0.9767441860465116
+    },
+    {
+      "seed": 45,
+      "task": "subset_pd_dd",
+      "protocol": "clean",
+      "accuracy": 0.7051282051282052,
+      "balanced_accuracy": 0.6517786561264822
+    },
+    {
+      "seed": 46,
+      "task": "subset_pd_hc",
+      "protocol": "leaky",
+      "accuracy": 0.971830985915493,
+      "balanced_accuracy": 0.9826086956521739
+    },
+    {
+      "seed": 46,
+      "task": "subset_pd_hc",
+      "protocol": "clean",
+      "accuracy": 0.9014084507042254,
+      "balanced_accuracy": 0.8920454545454546
+    },
+    {
+      "seed": 46,
+      "task": "subset_pd_dd",
+      "protocol": "leaky",
+      "accuracy": 0.9487179487179487,
+      "balanced_accuracy": 0.926995900839352
+    },
+    {
+      "seed": 46,
+      "task": "subset_pd_dd",
+      "protocol": "clean",
+      "accuracy": 0.717948717948718,
+      "balanced_accuracy": 0.6355731225296443
+    }
+  ]
+}
