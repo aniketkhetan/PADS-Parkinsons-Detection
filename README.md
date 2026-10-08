@@ -6,7 +6,7 @@ disease from wrist-worn accelerometer and gyroscope recordings in the
 (469 participants, 11 motor tasks, both wrists).
 
 The original pipeline — MiniRocket feature extraction into a small MLP — is
-reimplemented here and reproduces the published results to within noise.
+reimplemented here and reproduces the reported results to within noise.
 Re-running it under a corrected evaluation protocol shows that the reported
 gains over the PADS reference study were an artefact of **data leakage**:
 augmentation was applied before the train/test split, so most test recordings
@@ -14,8 +14,10 @@ had a near-identical synthetic copy in the training set. Corrected results match
 the reference baseline on PD vs healthy controls and fall below it on PD vs
 other movement disorders.
 
-The original manuscript is preserved unmodified in [`paper/`](paper/) — as
-written in 2025, and superseded by the results below.
+The capstone manuscript is preserved unmodified in [`paper/`](paper/). It was
+written for academic assessment in 2025 and **never submitted for publication**
+— "reported" throughout this README refers to that internal write-up, not to a
+published paper. Its results are superseded by those below.
 
 ---
 
@@ -23,13 +25,13 @@ written in 2025, and superseded by the results below.
 
 Balanced accuracy, mean ± standard deviation over 5 seeds.
 
-| Task | Published (2025) | Reproduced, leaky | Corrected, clean |
+| Task | Reported (2025) | Reproduced, leaky | Corrected, clean |
 |---|---:|---:|---:|
 | PD vs Healthy (355-subject subset) | 0.9289 | 0.948 ± 0.050 | **0.789 ± 0.059** |
 | PD vs DD (3-class, all 469) | 0.8694 | 0.870 ± 0.017 | **0.645 ± 0.035** |
 | PD vs All Classes (6-class, all 469) | 0.8775 | 0.796 ± 0.040 | **0.358 ± 0.067** |
 
-The leaky column reproduces the published numbers for the first two settings —
+The leaky column reproduces the reported numbers for the first two settings —
 the second to within 0.0006. The third is discussed under
 [Table I row 1](#table-i-row-1-is-anomalous).
 
@@ -44,7 +46,7 @@ Varghese et al. (2024), smartwatch only, acceleration + rotation:
 
 With leakage removed the method is statistically indistinguishable from the
 baseline on PD vs HC — the 2.6-point margin is roughly one standard error across
-seeds — and clearly below it on PD vs DD. The published margins do not survive a
+seeds — and clearly below it on PD vs DD. The reported margins do not survive a
 leak-free protocol.
 
 The six-class setting collapses to 0.358 against a 0.167 floor. With rare
@@ -115,7 +117,7 @@ class_labels = ["Parkinson's", "Healthy", "Other Movement Disorders",
 different ordering, so every axis label in Fig. 3 of the manuscript names the
 wrong class:
 
-![Published confusion matrix beside its corrected labelling](results/confusion_relabelling.png)
+![Reported confusion matrix beside its corrected labelling](results/confusion_relabelling.png)
 
 
 | Labelled | Actually | n | Correct |
@@ -143,11 +145,11 @@ codes and labels cannot desync.
 ### The three task settings were defined inconsistently
 
 The manuscript names three settings and defines none of them. They were
-recovered from the arithmetic of the published accuracies: accuracy can only
-take values `k/n`, so the denominator that makes each published figure an exact
+recovered from the arithmetic of the reported accuracies: accuracy can only
+take values `k/n`, so the denominator that makes each reported figure an exact
 integer gives away the test-set size.
 
-| Published row | Accuracy | Integer fit | n test | Therefore |
+| Reported row | Accuracy | Integer fit | n test | Therefore |
 |---|---:|---|---:|---|
 | PD vs All Classes | 0.9096 | 171/188 | 188 | all 469 participants |
 | PD vs DD | 0.8989 | 169/188 | 188 | all 469 participants |
@@ -247,7 +249,7 @@ tools/
   seed_sweep.py            repeat across seeds, report mean +- std
   summarise.py             assemble results/*.json into tables
   task_definition_probe.py identify the original task definitions
-  row_matching.py          match published rows to candidate experiments
+  row_matching.py          match reported rows to candidate experiments
   make_relabelling_figure.py  render the confusion-matrix relabelling figure
 tests/smoke_test.py    end-to-end run on synthetic data
 paper/                 the original manuscript
@@ -277,7 +279,7 @@ from their call sites. Consequences worth knowing:
   split.
 - Results here run on sktime 1.1.0 and torch 2.13.0, both much newer than the
   2025 environment. MiniRocket's kernel selection has changed across versions,
-  so the leaky protocol lands near the published numbers rather than exactly on
+  so the leaky protocol lands near the reported numbers rather than exactly on
   them.
 
 ## Known gaps between the manuscript and the code

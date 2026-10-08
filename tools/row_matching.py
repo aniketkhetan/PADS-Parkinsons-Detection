@@ -4,7 +4,7 @@
 
 Runs every candidate variant under the leaky protocol, records the full
 five-metric vector, and reports which (variant, seed) best reproduces each
-published row by mean absolute difference. Note that weighted recall equals
+reported row by mean absolute difference. Note that weighted recall equals
 accuracy by construction, so the rows carry four independent numbers, not five.
 """
 
@@ -34,7 +34,7 @@ from run_experiment import filter_task  # noqa: E402
 
 METRICS = ["accuracy", "balanced_accuracy", "precision", "recall", "f1"]
 
-PUBLISHED = {
+REPORTED = {
     "PD vs All Classes": [0.9096, 0.8775, 0.9109, 0.9096, 0.9076],
     "PD vs Healthy": [0.9648, 0.9289, 0.9647, 0.9648, 0.9641],
     "PD vs DD": [0.8989, 0.8694, 0.9022, 0.8989, 0.8981],
@@ -120,13 +120,13 @@ def main():
             print(f"  {v:14} " + " ".join(f"{x:.4f}" for x in m), flush=True)
 
     with open(ROOT / args.out, "w") as fh:
-        json.dump({"published": PUBLISHED, "records": records}, fh, indent=2)
+        json.dump({"reported": REPORTED, "records": records}, fh, indent=2)
 
-    print("\n### Best match for each published row\n")
-    print("| Published row | Best-matching variant | seed | mean abs diff | "
+    print("\n### Best match for each reported row\n")
+    print("| Reported row | Best-matching variant | seed | mean abs diff | "
           + " | ".join(METRICS) + " |")
     print("|---|---|---:|---:|" + "---:|" * len(METRICS))
-    for name, target in PUBLISHED.items():
+    for name, target in REPORTED.items():
         best = min(records,
                    key=lambda r: np.mean(np.abs(np.array(r["metrics"]) - target)))
         diff = float(np.mean(np.abs(np.array(best["metrics"]) - target)))

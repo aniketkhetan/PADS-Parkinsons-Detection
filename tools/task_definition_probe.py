@@ -4,7 +4,7 @@
 
 The manuscript names three settings but never defines them. This runs every
 plausible definition under the leaky protocol and scores each against the
-published table.
+reported table.
 """
 
 import sys
@@ -32,7 +32,7 @@ OMD = "Other Movement Disorders"
 SEED = 42
 
 # Manuscript Table I: (accuracy, balanced accuracy).
-PUBLISHED = {
+REPORTED = {
     "PD vs All Classes": (0.9096, 0.8775),
     "PD vs Healthy": (0.9648, 0.9289),
     "PD vs DD": (0.8989, 0.8694),
@@ -125,17 +125,17 @@ def main():
         rows.append((name, len(np.unique(labels)), len(y_te), acc, bal))
         print(f"  -> {name}: acc {acc:.4f}, balanced {bal:.4f}", flush=True)
 
-    print("\n| Variant | classes | n test | Accuracy | Balanced Acc. | closest published | |delta| bal |")
+    print("\n| Variant | classes | n test | Accuracy | Balanced Acc. | closest reported | |delta| bal |")
     print("|---|---:|---:|---:|---:|---|---:|")
     for name, n_cls, n_test, acc, bal in rows:
         best, gap = None, 1e9
-        for pub_name, (_, pub_bal) in PUBLISHED.items():
+        for pub_name, (_, pub_bal) in REPORTED.items():
             if abs(bal - pub_bal) < gap:
                 best, gap = pub_name, abs(bal - pub_bal)
         print(f"| {name} | {n_cls} | {n_test} | {acc:.4f} | {bal:.4f} | {best} | {gap:.4f} |")
 
-    print("\nPublished targets (accuracy / balanced accuracy):")
-    for pub_name, (pub_acc, pub_bal) in PUBLISHED.items():
+    print("\nReported targets (accuracy / balanced accuracy):")
+    for pub_name, (pub_acc, pub_bal) in REPORTED.items():
         print(f"  {pub_name:20} {pub_acc:.4f} / {pub_bal:.4f}")
 
 

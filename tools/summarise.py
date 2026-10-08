@@ -23,7 +23,7 @@ METRICS = [
 ]
 
 # As reported in the 2025 manuscript, Table I.
-PUBLISHED = {
+REPORTED = {
     "six_class": dict(accuracy=.9096, balanced_accuracy=.8775, precision=.9109,
                       recall=.9096, f1=.9076),
     "subset_pd_hc": dict(accuracy=.9648, balanced_accuracy=.9289, precision=.9647,
@@ -32,9 +32,9 @@ PUBLISHED = {
                         recall=.8989, f1=.8981),
 }
 
-# Test-set size implied by each published accuracy, since accuracy can only
+# Test-set size implied by each reported accuracy, since accuracy can only
 # take values k/n: 171/188, 137/142, 169/188.
-PUBLISHED_N = {"six_class": 188, "subset_pd_hc": 142, "pd_hc_other": 188}
+REPORTED_N = {"six_class": 188, "subset_pd_hc": 142, "pd_hc_other": 188}
 
 
 def load(task, protocol):
@@ -46,16 +46,16 @@ def load(task, protocol):
 
 
 def main():
-    print("### Reproduction vs. published\n")
+    print("### Reproduction vs. reported\n")
     header = "| Task | Protocol | " + " | ".join(n for _, n in METRICS) + " | n test |"
     print(header)
     print("|---|---|" + "---:|" * (len(METRICS) + 1))
 
     for task, task_name in TASKS:
-        pub = PUBLISHED[task]
-        print(f"| {task_name} | published (2025) | "
+        pub = REPORTED[task]
+        print(f"| {task_name} | reported (2025) | "
               + " | ".join(f"{pub[k]:.4f}" for k, _ in METRICS)
-              + f" | {PUBLISHED_N[task]} |")
+              + f" | {REPORTED_N[task]} |")
         for protocol in ("leaky", "clean"):
             result = load(task, protocol)
             if result is None:

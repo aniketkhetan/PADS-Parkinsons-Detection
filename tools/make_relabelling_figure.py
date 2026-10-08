@@ -1,4 +1,4 @@
-"""Render the published confusion matrix beside its corrected labelling.
+"""Render the reported confusion matrix beside its corrected labelling.
 
     python tools/make_relabelling_figure.py
 
@@ -27,7 +27,7 @@ CM = np.array([
     [0,  2,  0, 0,  5, 101],
 ])
 
-AS_PUBLISHED = ["Parkinson's", "Healthy", "Other Movement Disorders",
+AS_REPORTED = ["Parkinson's", "Healthy", "Other Movement Disorders",
                 "Essential Tremor", "Atypical Parkinsonism", "Multiple Sclerosis"]
 
 CORRECTED = ["Atypical Parkinsonism", "Essential Tremor", "Healthy",
@@ -64,7 +64,7 @@ def panel(ax, names, title, highlight):
 def main():
     fig, axes = plt.subplots(1, 2, figsize=(16, 7.6))
 
-    panel(axes[0], AS_PUBLISHED, "As published (Fig. 3)", "Multiple Sclerosis")
+    panel(axes[0], AS_REPORTED, "As reported (Fig. 3)", "Multiple Sclerosis")
     panel(axes[1], CORRECTED, "Correctly labelled (LabelEncoder order)",
           "Parkinson's")
 
