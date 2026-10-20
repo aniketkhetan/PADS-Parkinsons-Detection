@@ -41,8 +41,12 @@ Varghese et al. (2024), smartwatch only, acceleration + rotation:
 
 | Task | PADS baseline | This work (clean) |
 |---|---:|---:|
-| PD vs HC | 0.7631 | 0.789 ± 0.059 |
-| PD vs DD | 0.7498 | 0.638 ± 0.019 |
+| PD vs HC (355-subject subset) | 0.7631 | 0.789 ± 0.059 |
+| PD vs DD (390-subject subset) | 0.7498 | 0.638 ± 0.019 |
+
+These are the subset tasks, which are the ones directly comparable to the
+reference study. The PD vs DD row above it is the three-class setting the
+capstone actually ran, and is a different problem.
 
 With leakage removed the method is statistically indistinguishable from the
 baseline on PD vs HC — the 2.6-point margin is roughly one standard error across
@@ -92,7 +96,7 @@ training split only.
 
 | Task | leaky | clean | delta |
 |---|---:|---:|---:|
-| PD vs Healthy | 0.948 | 0.789 | **−0.158** |
+| PD vs Healthy (subset) | 0.948 | 0.789 | **−0.158** |
 | PD vs DD (3-class) | 0.870 | 0.645 | **−0.224** |
 | PD vs All Classes | 0.796 | 0.358 | **−0.438** |
 
@@ -102,7 +106,7 @@ twin is a large share of everything the model has seen of that class.
 
 ---
 
-## Two further defects in the original reporting
+## Three further defects in the original reporting
 
 ### The confusion matrix axes are wrong
 
@@ -252,7 +256,7 @@ tools/
   row_matching.py          match reported rows to candidate experiments
   make_relabelling_figure.py  render the confusion-matrix relabelling figure
 tests/smoke_test.py    end-to-end run on synthetic data
-paper/                 the original manuscript
+paper/                 the 2025 manuscript, superseded
 results/               metrics and figures
 ```
 
