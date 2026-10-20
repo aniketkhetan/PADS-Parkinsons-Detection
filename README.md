@@ -286,9 +286,13 @@ from their call sites. Consequences worth knowing:
   so the leaky protocol lands near the reported numbers rather than exactly on
   them.
 
-## Known gaps between the manuscript and the code
+## Reconciling the manuscript with the implementation
 
-| Manuscript states | Original code did |
+Where the manuscript and the surviving implementation disagreed, this
+reproduction follows the implementation, since that is what produced the
+numbers reported in 2025.
+
+| Manuscript states | Implementation does |
 |---|---|
 | learning rate 0.001 | `lr=0.002` |
 | stratified 5-fold cross-validation | one `train_test_split` |
@@ -298,9 +302,6 @@ from their call sites. Consequences worth knowing:
 | overlapping windows before MiniRocket | full series, no windowing |
 | "JSON files' parsing" (§IV.A) | `.bin` files via `np.fromfile` |
 | MiniRocket fit on the training set | fit on the full dataset |
-
-§IV.A also attributes PADS to "Iakovakis et al." while reference [1] is Varghese
-et al.; §II has it right.
 
 ## References
 
